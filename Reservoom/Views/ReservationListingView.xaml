@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Reservoom.Views"
+             xmlns:local="clr-namespace:Reservoom.Views" xmlns:viewmodels="clr-namespace:Reservoom.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ReservationListingViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -26,17 +26,17 @@
                        FontSize="24"/>
 
             <Button Grid.Column="1"
-                    
-                    Content="Make Reservation"/>
+                    Content="Make Reservation"
+                    Command="{Binding MakeReservationCommand}" Cursor="Hand"/>
         </Grid>
         
         <!--1 Строка для просмотра списка бронирования-->
         <Grid Grid.Row="1" Margin="0 25 0 0">
-            <ListView>
-                <!--Отоброжение строк списка-->
+            <ListView ItemsSource="{Binding Reservations}" Cursor="Hand">
+                <!--Отоброжение строк списка--><!--
                 <ListViewItem/>
                 <ListViewItem/>
-                <ListViewItem/>
+                <ListViewItem/>-->
 
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -51,7 +51,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center"
-                                               Text="12"/>
+                                               Text="{Binding RoomID}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -59,7 +59,7 @@
                         <GridViewColumn Header="UserName">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="SingletonSean"
+                                    <TextBlock Text="{Binding UserName}"
                                                Padding="0 0 20 0"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -68,7 +68,7 @@
                         <GridViewColumn Header="Start Date">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="8/20/2021"
+                                    <TextBlock Text="{Binding StartDate}"
                                                Padding="0 0 20 0"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -78,8 +78,8 @@
                         <GridViewColumn Header="End Date">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="10/5/2021"
-                                               Padding="0 0 20 0"/>
+                                    <TextBlock Text="{Binding EndDate}"
+                                               Padding="0 0 20 0" Cursor="Hand"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
