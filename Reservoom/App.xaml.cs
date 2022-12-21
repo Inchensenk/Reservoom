@@ -48,7 +48,7 @@ namespace Reservoom
             }
             
 
-            IEnumerable<Reservation> reservations = hotel.GetReservationsForUser("SingletonSean");
+            IEnumerable<Reservation> reservations = hotel.GetAllReservations("SingletonSean");
 
             base.OnStartup(e);
         }

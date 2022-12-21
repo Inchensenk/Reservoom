@@ -12,7 +12,9 @@
         FontSize="14">
 
     <Grid Margin="20 10" MaxWidth="600">
-        <!--Содержимое Пользовательского элемента управления "MakeReservationView.xaml" будет отоброжатся в главном окне-->
-        <views:MakeReservationView />
+        <!--Содержимое Пользовательского элемента управления "MakeReservationView.xaml" будет отоброжатся в главном окне--><!--
+        <views:MakeReservationView />-->
+        
+        <views:ReservationListingView/>
     </Grid>
 </Window>
