@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:Reservoom"
         mc:Ignorable="d"
         xmlns:views="clr-namespace:Reservoom.Views"
-        Title="Reservoom" Height="450" Width="800">
+        Title="Reservoom" 
+        Height="450" 
+        Width="800"
+        FontSize="14">
 
-    <Grid>
+    <Grid Margin="20 10" MaxWidth="600">
         <!--Содержимое Пользовательского элемента управления "MakeReservationView.xaml" будет отоброжатся в главном окне-->
         <views:MakeReservationView />
     </Grid>
