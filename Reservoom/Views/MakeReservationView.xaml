@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="Reservoom.Views.MakeReservationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Reservoom.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--0 Строка для зпголовка-->
+            <RowDefinition Height="auto"/>
+            <!--1 Строка для поля имени-->
+            <RowDefinition Height="auto"/>
+            <!--2 Строка для полей с номером этажа и номером комнаты-->
+            <RowDefinition Height="auto"/>
+            <!--3 Строка для ддя полей с датами вьезда и выезда-->
+            <RowDefinition Height="auto"/>
+            <!--4 Строка для кнопок отправки и отмены-->
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--0 Строка для зпголовка-->
+        <Grid Grid.Row="0" Margin="10 0 0 0">
+            <TextBlock Text="Make Reservation" 
+                   FontSize="24"
+                   Grid.Row="0"/>
+        </Grid>
+        
+        
+        <!--1 Строка для поля имени-->
+        <Grid Grid.Row="1" Margin="10 25 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Name"/>
+
+            <TextBox Grid.Row="1"
+                       Text=""
+                       Margin="0 5 0 0"/>
+        </Grid>
+
+        <!--2 Строка для полей с номером этажа и номером комнаты-->
+        <Grid Grid.Row="2" Margin="10 10 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Поле ввода "Floor No."-->
+            <TextBlock Grid.Row="0" 
+                       Grid.Column="0"
+                       Text="Floor No."/>
+
+            <TextBox Grid.Row="1"
+                     Grid.Column="0"
+                       Text=""
+                       Margin="0 5 0 0"/>
+
+            <!--Поле ввода "Room No"-->
+            <TextBlock Grid.Row="0" 
+                       Grid.Column="1"
+                       Margin="5 0 0 0"
+                       Text="Room No."/>
+
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                       Text=""
+                       Margin="5 5 0 0"/>
+        </Grid>
+
+        <!--3 Строка для ддя полей с датами вьезда и выезда-->
+        <Grid Grid.Row="3" Margin="0 10 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Дата вьезда "Start Date"-->
+            <TextBlock Grid.Row="0" 
+                       Grid.Column="0"
+                       Text="Start Date"
+                       Margin="10 0 0 0"/>
+
+            <DatePicker Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10 5 0 0"
+                        SelectedDate=""/>
+
+            <!--Дата выезда "End Date"-->
+            <TextBlock Grid.Row="0" 
+                       Grid.Column="1"
+                       Margin="10 0 0 0"
+                       Text="Room No."/>
+
+            <DatePicker Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10 5 0 0"
+                        SelectedDate=""/>
+        </Grid>
+        
+        <!--4 Строка для кнопок отправки и отмены-->
+        <Grid Grid.Row="4" Margin="10 25 0 0">
+            <!--Горизонтальный стек с кнопками-->
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Submit"/>
+                <Button Content="Cansel" Margin="5 0 0 0"/>
+            </StackPanel>
+        </Grid>
+        
+        
+    </Grid>
+</UserControl>
