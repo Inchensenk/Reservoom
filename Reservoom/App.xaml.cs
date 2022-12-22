@@ -21,7 +21,7 @@ namespace Reservoom
         /// </summary>
         private readonly Hotel _hotel;
 
-        private 
+      
 
         public App()
         {
