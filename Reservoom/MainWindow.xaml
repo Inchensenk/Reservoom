@@ -15,6 +15,8 @@
         <!--Содержимое Пользовательского элемента управления "MakeReservationView.xaml" будет отоброжатся в главном окне--><!--
         <views:MakeReservationView />-->
         
+        <!--<views:ReservationListingView DataContext="{Binding CurrentViewModel}"/>-->
+        <!--<views:MakeReservationView DataContext="{Binding CurrentViewModel}"/>-->
         <views:ReservationListingView DataContext="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

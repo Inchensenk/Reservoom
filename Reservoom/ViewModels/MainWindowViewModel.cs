@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reservoom.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,10 @@ namespace Reservoom.ViewModels
     {
         public ViewModelBase CurrentViewModel { get;}
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(Hotel hotel)
         {
+            //Инициализируем окно которое будет отброжаться при запуске программы
+            //CurrentViewModel = new MakeReservationViewModel(hotel);
             CurrentViewModel = new ReservationListingViewModel();
         }
     }

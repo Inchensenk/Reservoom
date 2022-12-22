@@ -9,6 +9,9 @@ using System.Windows.Input;
 
 namespace Reservoom.ViewModels
 {
+    /// <summary>
+    /// Вью модель списка резервирования
+    /// </summary>
     public class ReservationListingViewModel : ViewModelBase
     {
         private readonly ObservableCollection<ReservationViewModel> _reservations;

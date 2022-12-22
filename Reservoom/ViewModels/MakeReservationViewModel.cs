@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Reservoom.Commands;
+using Reservoom.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,7 +59,7 @@ namespace Reservoom.ViewModels
         /// <summary>
         /// Дата вьезда
         /// </summary>
-        private DateTime _startDate;
+        private DateTime _startDate = new DateTime(2022,1,1);/*дата вьезда по умолчанию, чтобы не листать долго до 2022 года при выборе даты*/
         public DateTime StartDate
         {
             get => _startDate;
@@ -72,7 +74,7 @@ namespace Reservoom.ViewModels
         /// <summary>
         /// Дата Выезда
         /// </summary>
-        private DateTime _endDate;
+        private DateTime _endDate = new DateTime(2022,1,8);/*Дата выезда по умолчанию, так же чтобы долго не листать(период пребывания в отле по умолчанию 1 неделя)*/
         public DateTime EndDate
         {
             get => _endDate;
@@ -88,9 +90,10 @@ namespace Reservoom.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeReservationViewModel()
+        public MakeReservationViewModel(Hotel hotel)
         {
-
+            SubmitCommand = new MakeReservationCommand(this, hotel);
+            CancelCommand = new CancelMakeReservationCommand();
         }
     }
 }
