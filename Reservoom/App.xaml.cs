@@ -1,4 +1,6 @@
-﻿using Reservoom.Exeptions;
+﻿using Microsoft.EntityFrameworkCore;
+using Reservoom.DbContexts;
+using Reservoom.Exeptions;
 using Reservoom.Models;
 using Reservoom.Services;
 using Reservoom.Stores;
@@ -18,6 +20,7 @@ namespace Reservoom
     /// </summary>
     public partial class App : Application
     {
+        private const string CONNECTION_STRING = "Data Source=reservoom.db";
         /// <summary>
         /// Экземпляр отеля который будет использоваться во всем приложении
         /// </summary>
@@ -37,9 +40,13 @@ namespace Reservoom
     }
 
 
-    //Переопределить при запуске
-    protected override void OnStartup(StartupEventArgs e)
+        //Переопределить при запуске
+        protected override void OnStartup(StartupEventArgs e)
         {
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
+            ReservoomDbContext dbContext = new ReservoomDbContext(options);
+
+            dbContext.Database.Migrate();
 
             _navigationStore.CurrentViewModel = CreateMakeReservationViewModel();
 
