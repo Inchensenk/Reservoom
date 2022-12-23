@@ -36,5 +36,10 @@ namespace Reservoom.Models
         {
             _reservationBook.AddReservation(reservation);
         }
+
+        internal IEnumerable<Reservation> GetAllReservations()
+        {
+            return _reservationBook.GetAllReservations();
+        }
     }
 }

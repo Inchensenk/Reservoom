@@ -1,4 +1,5 @@
 ﻿using Reservoom.Models;
+using Reservoom.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,25 @@ namespace Reservoom.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get;}
+        /// <summary>
+        /// хранилище навигации
+        /// </summary>
+        private readonly NavigationStore _navigationStore;
 
-        public MainWindowViewModel(Hotel hotel)
+        /// <summary>
+        /// Текущая вьюмодель для приложения
+        /// </summary>
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+        public MainWindowViewModel(NavigationStore navigationStore)
         {
-            //Инициализируем окно которое будет отброжаться при запуске программы
-            //CurrentViewModel = new MakeReservationViewModel(hotel);
-            CurrentViewModel = new ReservationListingViewModel();
+            _navigationStore= navigationStore;
+
+            _navigationStore.CurrentViewModelChanged += _navigationStore_CurrentViewModelChanged;
+        }
+
+        private void _navigationStore_CurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

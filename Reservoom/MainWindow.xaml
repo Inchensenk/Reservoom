@@ -5,18 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Reservoom"
         mc:Ignorable="d"
-        xmlns:views="clr-namespace:Reservoom.Views" xmlns:viewmodels="clr-namespace:Reservoom.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        xmlns:views="clr-namespace:Reservoom.Views" 
+        xmlns:vms="clr-namespace:Reservoom.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=vms:MainWindowViewModel}"
         Title="Reservoom" 
         Height="450" 
         Width="800"
         FontSize="14">
 
     <Grid Margin="20 10" MaxWidth="600">
+        <!--Управление контентом, который будет отоброжать главная вью модель-->
+        <ContentControl Content="{Binding CurrentViewModel}" />
+        
         <!--Содержимое Пользовательского элемента управления "MakeReservationView.xaml" будет отоброжатся в главном окне--><!--
         <views:MakeReservationView />-->
-        
-        <!--<views:ReservationListingView DataContext="{Binding CurrentViewModel}"/>-->
         <!--<views:MakeReservationView DataContext="{Binding CurrentViewModel}"/>-->
         <views:ReservationListingView DataContext="{Binding CurrentViewModel}"/>
+        
+        <!--Шаблоны для навигации-->
+        <Grid.Resources>
+            <!--Сопоставление MakeReservationViewModel с MakeReservationView-->
+            <DataTemplate DataType="{x:Type vms:MakeReservationViewModel}">
+                <views:MakeReservationView/>
+            </DataTemplate>
+            <!--Сопоставление ReservationListingViewModel c ReservationListingView-->
+            <DataTemplate DataType="{x:Type vms:ReservationListingViewModel}">
+                <views:ReservationListingView/>
+            </DataTemplate>
+
+        </Grid.Resources>
     </Grid>
+
 </Window>
+
