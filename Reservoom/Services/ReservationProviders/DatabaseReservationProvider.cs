@@ -1,17 +1,36 @@
-﻿using Reservoom.Models;
+﻿using Reservoom.DbContexts;
+using Reservoom.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Reservoom.DTOs;
 
 namespace Reservoom.Services.ReservationProviders
 {
     class DatabaseReservationProvider : IReservationProvider
     {
-        public Task<IEnumerable<Reservation>> GetAllReservations()
+        private readonly ReservoomDbContextFactory _dbContextFactory = null!;
+        public DatabaseReservationProvider(ReservoomDbContextFactory dbContextFactory)
         {
-            throw new NotImplementedException();
+            _dbContextFactory = dbContextFactory;
+        }
+
+        public async Task<IEnumerable<Reservation>> GetAllReservations()
+        {
+            using (ReservoomDbContext context = _dbContextFactory.CreateDbContext())
+            {
+                IEnumerable<ReservationDTO> reservationDTOs = await context.Reservations.ToListAsync();
+
+                return reservationDTOs.Select(r => ToReservation(r));
+            }
+        }
+
+        private static Reservation ToReservation(ReservationDTO r)
+        {
+            return new Reservation(new RoomID(r.FloorNumber, r.RoomNumber), r.UserName, r.StartTime, r.EndTime);
         }
     }
 }
