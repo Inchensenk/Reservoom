@@ -44,7 +44,10 @@ namespace Reservoom
         protected override void OnStartup(StartupEventArgs e)
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlite(CONNECTION_STRING).Options;
-            ReservoomDbContext dbContext = new ReservoomDbContext(options);
+            using (ReservoomDbContext dbContext = new ReservoomDbContext(options))
+            {
+
+            }
 
             dbContext.Database.Migrate();
 
