@@ -30,7 +30,7 @@ namespace Reservoom.ViewModels
             MakeReservationCommand = new NavigateCommand(makeReservationNavigationService);
 
             UpdateReservations();
-
+              
         }
 
         private void UpdateReservations()

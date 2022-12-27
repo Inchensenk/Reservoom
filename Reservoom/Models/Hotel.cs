@@ -28,18 +28,24 @@ namespace Reservoom.Models
         }
 
         /// <summary>
+        /// Get all reservations.
+        /// </summary>
+        /// <returns>All reservations in the hotel reservation book.</returns>
+        public IEnumerable<Reservation> GetAllReservations()
+        {
+            return _reservationBook.GetAllReservations();
+        }
+
+        /// <summary>
         /// Make a reservation.
         /// </summary>
         /// <param name="reservation">The incoming reservation.</param>
-        /// <exception cref="ReservationConflict"
+        /// <exception cref="ReservationConflictExeption">Throw if incoming reservation conflicts with existing reservation.</exception>
         public void MakeReservation(Reservation reservation)
         {
             _reservationBook.AddReservation(reservation);
         }
 
-        internal IEnumerable<Reservation> GetAllReservations()
-        {
-            return _reservationBook.GetAllReservations();
-        }
+
     }
 }

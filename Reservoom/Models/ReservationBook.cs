@@ -1,4 +1,6 @@
 ﻿using Reservoom.Exeptions;
+using Reservoom.Services.ReservationCreators;
+using Reservoom.Services.ReservationProviders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +11,22 @@ namespace Reservoom.Models
 {
     public class ReservationBook
     {
-        private readonly List<Reservation> _reservations;
+        private readonly IReservationProvider _reservationProvider;
+        private readonly IReservationCreator _reservationCreator;
 
-        public ReservationBook()
+        public ReservationBook(IReservationCreator reservationCreator, IReservationProvider reservationProvider)
         {
-            _reservations = new List<Reservation>();
+            _reservationCreator = reservationCreator;
+            _reservationProvider = reservationProvider;
         }
 
         /// <summary>
-        /// Get the reservation for a user.
+        /// Get all reservations.
         /// </summary>
-        /// <param name="userName">The username of the user.</param>
-        /// <returns>The reservation for a user.</returns>
-        public IEnumerable<Reservation> GetAllReservations()
+        /// <returns>All reservation in the reservation book.</returns>
+        public async IEnumerable<Reservation> GetAllReservations()
         {
-            return _reservations;
+            return await _reservationProvider.GetAllReservations();
         }
 
         /// <summary>
@@ -31,7 +34,7 @@ namespace Reservoom.Models
         /// </summary>
         /// <param name="reservation">The incoming reservation.</param>
         /// <exception cref="ReservationConflictExeption">Throw if incoming reservation conflicts with existing reservation.</exception>
-        public void AddReservation(Reservation reservation)
+        public async Task AddReservation(Reservation reservation)
         {
             foreach (Reservation existingReservation in _reservations)
             {
@@ -40,7 +43,7 @@ namespace Reservoom.Models
                     throw new ReservationConflictExeption(existingReservation, reservation);
                 }
             }
-            _reservations.Add(reservation);
+            await _reservationCreator.CreateReservation(reservation);
         }
     }
 }
