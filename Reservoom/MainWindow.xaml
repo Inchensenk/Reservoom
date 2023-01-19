@@ -20,6 +20,7 @@
         <!--Содержимое Пользовательского элемента управления "MakeReservationView.xaml" будет отоброжатся в главном окне--><!--
         <views:MakeReservationView />-->
         <!--<views:MakeReservationView DataContext="{Binding CurrentViewModel}"/>-->
+        
         <views:ReservationListingView DataContext="{Binding CurrentViewModel}"/>
         
         <!--Шаблоны для навигации-->
@@ -32,7 +33,6 @@
             <DataTemplate DataType="{x:Type vms:ReservationListingViewModel}">
                 <views:ReservationListingView/>
             </DataTemplate>
-
         </Grid.Resources>
     </Grid>
 

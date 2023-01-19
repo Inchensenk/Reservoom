@@ -17,8 +17,8 @@ namespace Reservoom.ViewModels
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
-            //Если на событие изменения свойства что-то подписано,
-            //то мы вызовем его с отправителем и некоторые аргументы события изменения свойства
+            /*Если на событие изменения свойства что-то подписано,
+            то мы вызовем его с отправителем и некоторые аргументы события изменения свойства*/
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

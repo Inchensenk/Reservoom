@@ -37,7 +37,7 @@ namespace Reservoom
             _hotel = new Hotel("Kur Haus");
             _navigationStore=new NavigationStore();
 
-    }
+        }
 
 
         //Переопределить при запуске

@@ -14,7 +14,6 @@ namespace Reservoom.DbContexts
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlite("Data Sourse=reservoom.db").Options;
             return new ReservoomDbContext(options);
-
         }
     }
 }
